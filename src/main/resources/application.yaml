@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: token-validator
+
+server:
+  port: 8080
+
+#springdoc:
+#  pathsToMatch: /**
+#  swagger-ui:
+#    enabled: true
