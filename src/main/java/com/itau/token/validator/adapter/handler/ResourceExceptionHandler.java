@@ -33,7 +33,7 @@ public class ResourceExceptionHandler {
         for(FieldError fieldError : fieldErrors){
             validationViolation.addError(fieldError.getField(),fieldError.getDefaultMessage());
         }
-        logger.error("Erro na requisicao - {}",serverWebInputException);
+        logger.error("Erro ServerWebInputException",serverWebInputException);
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(validationViolation);
     }
 
@@ -47,7 +47,7 @@ public class ResourceExceptionHandler {
                 validationViolation.addError(fieldError.getField(),fieldError.getDefaultMessage());
             }
 
-        logger.error("Erro na requisicao - {}",e);
+        logger.error("Erro MethodArgumentNotValidException",e);
         return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(validationViolation);
     }
 
@@ -56,7 +56,7 @@ public class ResourceExceptionHandler {
         StandardError standardError = new StandardError(HttpStatus.BAD_REQUEST.value(),baseUncheckedException.getMessage(),
                 Calendar.getInstance());
 
-        logger.error("Erro na requisicao - {}",baseUncheckedException);
+        logger.error("Erro BaseUncheckedException ",baseUncheckedException);
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(standardError);
     }
 
@@ -66,7 +66,7 @@ public class ResourceExceptionHandler {
         StandardError standardError = new StandardError(HttpStatus.BAD_REQUEST.value(),ex.getMessage(),
                 Calendar.getInstance());
 
-        logger.error("Erro na requisicao - {}",ex);
+        logger.error("Erro Generico - Exception",ex);
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(standardError);
     }
 }

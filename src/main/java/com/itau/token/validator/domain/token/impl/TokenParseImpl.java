@@ -28,12 +28,12 @@ public class TokenParseImpl implements ITokenParse {
 
     @Override
     public JsonNode parseTokenPayload(TokenDTO tokenDTO) {
-        String[] chunks = tokenDTO.tokenJwt().split("\\.");
-        Base64.Decoder decoder = Base64.getUrlDecoder();
-        String payload = new String(decoder.decode(chunks[1]));
         try {
+            String[] chunks = tokenDTO.tokenJwt().split("\\.");
+            Base64.Decoder decoder = Base64.getUrlDecoder();
+            String payload = new String(decoder.decode(chunks[1]));
             return mapper.readTree(payload);
-        } catch (JsonProcessingException e) {
+        } catch (Exception e) {
             logger.error("Erro ao extrair dados Token",e);
             throw new FalhaExtrairDadosToken(messageService.getMessage(ConstantsMessageException.ERRO_EXTRAIR_TOKEN.name()));
         }
