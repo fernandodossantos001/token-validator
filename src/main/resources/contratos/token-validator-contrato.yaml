@@ -16,6 +16,13 @@ paths:
       operationId: validaToken
       summary: Valida Token
       description: Endpoint responsável por fazer a validação do token
+      parameters:
+        - name: x-transaction-id
+          in: header
+          required: false
+          schema:
+            type: string
+          description: ID da transação, campos destinado troubleshooting
       requestBody:
         required: true
         content:
