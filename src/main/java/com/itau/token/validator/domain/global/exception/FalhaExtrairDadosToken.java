@@ -1,4 +1,4 @@
-package com.itau.token.validator.domain.global.service.exception;
+package com.itau.token.validator.domain.global.exception;
 
 public class FalhaExtrairDadosToken extends BaseUncheckedException {
     public FalhaExtrairDadosToken(String message) {

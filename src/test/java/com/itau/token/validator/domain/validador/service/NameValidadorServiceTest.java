@@ -28,7 +28,7 @@ public class NameValidadorServiceTest {
     void testValidateSuccess(){
         ValidadorDTO validadorDTO = nameValidadorService.validar("Toninho Araujo");
         Assertions.assertFalse(validadorDTO.error());
-        Assertions.assertEquals(Optional.empty(),validadorDTO.messageError());
+        Assertions.assertEquals(Optional.empty(),validadorDTO.erroMessage());
     }
 
     @Test
@@ -37,8 +37,8 @@ public class NameValidadorServiceTest {
         Mockito.when(messageService.getMessage(Mockito.anyString())).thenReturn(mensagemErro);
         ValidadorDTO validadorDTO = nameValidadorService.validar("M4ria Olivia");
         Assertions.assertTrue(validadorDTO.error());
-        Assertions.assertFalse(validadorDTO.messageError().isEmpty());
-        validadorDTO.messageError().ifPresent( me -> Assertions.assertEquals(mensagemErro,me));
+        Assertions.assertFalse(validadorDTO.erroMessage().isEmpty());
+        validadorDTO.erroMessage().ifPresent(me -> Assertions.assertEquals(mensagemErro,me));
     }
 
     @Test
@@ -47,8 +47,8 @@ public class NameValidadorServiceTest {
         Mockito.when(messageService.getMessage(ConstantsMessageException.REGRA_NEGOCIO_TAMANHO_NAME_INVALIDO.name())).thenReturn(mensagemErro);
         ValidadorDTO validadorDTO = nameValidadorService.validar("Maximiliano Antonio Benedito Herculano Gabriel Fernando Domingos Jose Leopoldo Carlos Humberto Valentim Ricardo Luis Frederico Augusto Raimundo Vicente Felipe Teodoro Cristovao Roberto Manuel Henrique Santiago Lucas Alexandre Mauricio Eduardo Rafael Guilherme Otavio Silveira Monteiro Cardoso Albuquerque Sobrinho Neto Junior");
         Assertions.assertTrue(validadorDTO.error());
-        Assertions.assertFalse(validadorDTO.messageError().isEmpty());
-        validadorDTO.messageError().ifPresent( me -> Assertions.assertEquals(mensagemErro,me));
+        Assertions.assertFalse(validadorDTO.erroMessage().isEmpty());
+        validadorDTO.erroMessage().ifPresent(me -> Assertions.assertEquals(mensagemErro,me));
     }
 
     @Test

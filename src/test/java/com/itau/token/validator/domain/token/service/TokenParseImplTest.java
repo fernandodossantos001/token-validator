@@ -6,7 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.itau.token.validator.domain.global.service.MessageService;
 import com.itau.token.validator.domain.token.impl.TokenParseImpl;
 import com.itau.token.validator.domain.token.model.TokenDTO;
-import com.itau.token.validator.domain.global.service.exception.FalhaExtrairDadosToken;
+import com.itau.token.validator.domain.global.exception.FalhaExtrairDadosToken;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

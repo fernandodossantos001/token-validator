@@ -1,4 +1,4 @@
-package com.itau.token.validator.domain.global.service.exception;
+package com.itau.token.validator.domain.global.exception;
 
 import java.io.Serializable;
 
@@ -11,23 +11,14 @@ public class FieldMessage implements Serializable {
         this.message = message;
     }
 
-    public FieldMessage(){
-
-    }
 
     public String getFieldName() {
         return fieldName;
     }
 
-    public void setFieldName(String fieldName) {
-        this.fieldName = fieldName;
-    }
 
     public String getMessage() {
         return message;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
-    }
 }

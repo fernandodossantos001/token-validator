@@ -25,7 +25,7 @@ public class SeedValidadorServiceTest {
     void testValidarSuccess(){
         ValidadorDTO validadorDTO = seedValidadorService.validar("7841");
         Assertions.assertFalse(validadorDTO.error());
-        Assertions.assertTrue(validadorDTO.messageError().isEmpty());
+        Assertions.assertTrue(validadorDTO.erroMessage().isEmpty());
     }
 
     @Test
@@ -34,8 +34,8 @@ public class SeedValidadorServiceTest {
         Mockito.when(messageService.getMessage(Mockito.anyString())).thenReturn(mensagemErro);
         ValidadorDTO validadorDTO = seedValidadorService.validar("22");
         Assertions.assertTrue(validadorDTO.error());
-        Assertions.assertFalse(validadorDTO.messageError().isEmpty());
-        validadorDTO.messageError().ifPresent( me -> Assertions.assertEquals(mensagemErro,me));
+        Assertions.assertFalse(validadorDTO.erroMessage().isEmpty());
+        validadorDTO.erroMessage().ifPresent(me -> Assertions.assertEquals(mensagemErro,me));
     }
 
     @Test
@@ -44,8 +44,8 @@ public class SeedValidadorServiceTest {
         Mockito.when(messageService.getMessage(Mockito.anyString())).thenReturn(mensagemErro);
         ValidadorDTO validadorDTO = seedValidadorService.validar("Xpto");
         Assertions.assertTrue(validadorDTO.error());
-        Assertions.assertFalse(validadorDTO.messageError().isEmpty());
-        validadorDTO.messageError().ifPresent( me -> Assertions.assertEquals(mensagemErro,me));
+        Assertions.assertFalse(validadorDTO.erroMessage().isEmpty());
+        validadorDTO.erroMessage().ifPresent(me -> Assertions.assertEquals(mensagemErro,me));
     }
 
 

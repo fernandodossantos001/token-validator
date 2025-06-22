@@ -1,13 +1,12 @@
 package com.itau.token.validator.domain.token.impl;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.itau.token.validator.domain.global.service.MessageService;
 import com.itau.token.validator.domain.token.ITokenParse;
 import com.itau.token.validator.domain.token.model.ConstantsMessageException;
 import com.itau.token.validator.domain.token.model.TokenDTO;
-import com.itau.token.validator.domain.global.service.exception.FalhaExtrairDadosToken;
+import com.itau.token.validator.domain.global.exception.FalhaExtrairDadosToken;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;

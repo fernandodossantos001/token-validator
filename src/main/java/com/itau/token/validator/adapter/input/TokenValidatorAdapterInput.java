@@ -24,7 +24,6 @@ public class TokenValidatorAdapterInput implements V1Api {
 
     @Override
     public ResponseEntity<TokenResponse> validaToken(TokenRequest tokenRequest,String xTransactionId) {
-
         logger.info("Token Recebido - {}",tokenRequest.getTokenJwt());
         TokenDTO tokenDTO = new TokenDTO(tokenRequest.getTokenJwt());
         TokenValidateDTO isValideToken = iTokenService.valida(tokenDTO);

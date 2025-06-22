@@ -2,7 +2,7 @@ package com.itau.token.validator.domain.token.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.itau.token.validator.domain.global.service.MessageService;
-import com.itau.token.validator.domain.global.service.exception.FalhaExtrairDadosToken;
+import com.itau.token.validator.domain.global.exception.FalhaExtrairDadosToken;
 import com.itau.token.validator.domain.token.impl.TokenParseImpl;
 import com.itau.token.validator.domain.token.impl.TokenServiceImpl;
 import com.itau.token.validator.domain.token.model.ConstantsMessageException;

@@ -35,7 +35,7 @@ public class ValidadorServiceImplTest {
         ValidadorDTO validadorDTO = validadorService.validar("Luiz Inacio Messias Bolsonaro", "name");
 
         Assertions.assertFalse(validadorDTO.error());
-        Assertions.assertEquals(Optional.empty(),validadorDTO.messageError());
+        Assertions.assertEquals(Optional.empty(),validadorDTO.erroMessage());
     }
 
     @Test
@@ -47,7 +47,7 @@ public class ValidadorServiceImplTest {
         ValidadorDTO validadorDTO = validadorService.validar("Admin", "role");
 
         Assertions.assertFalse(validadorDTO.error());
-        Assertions.assertEquals(Optional.empty(),validadorDTO.messageError());
+        Assertions.assertEquals(Optional.empty(),validadorDTO.erroMessage());
     }
 
 
@@ -61,7 +61,7 @@ public class ValidadorServiceImplTest {
         ValidadorDTO validadorDTO = validadorService.validar("7841", "seed");
 
         Assertions.assertFalse(validadorDTO.error());
-        Assertions.assertEquals(Optional.empty(),validadorDTO.messageError());
+        Assertions.assertEquals(Optional.empty(),validadorDTO.erroMessage());
     }
 
 
@@ -83,8 +83,8 @@ public class ValidadorServiceImplTest {
         ValidadorDTO validadorDTO = validadorService.validar("xpto", "validadorInvalido");
 
         Assertions.assertTrue(validadorDTO.error());
-        Assertions.assertFalse(validadorDTO.messageError().isEmpty());
-        validadorDTO.messageError().ifPresent(me -> Assertions.assertEquals(message,me));
+        Assertions.assertFalse(validadorDTO.erroMessage().isEmpty());
+        validadorDTO.erroMessage().ifPresent(me -> Assertions.assertEquals(message,me));
     }
 
 }

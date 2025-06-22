@@ -26,7 +26,7 @@ public class RoleValidadorServiceTest {
     void testValidarSuccess(){
         ValidadorDTO validadorDTO = roleValidadorService.validar("Admin");
         Assertions.assertFalse(validadorDTO.error());
-        Assertions.assertTrue(validadorDTO.messageError().isEmpty());
+        Assertions.assertTrue(validadorDTO.erroMessage().isEmpty());
     }
 
     @Test
@@ -35,8 +35,8 @@ public class RoleValidadorServiceTest {
         Mockito.when(messageService.getMessage(Mockito.anyString())).thenReturn(mensagemErro);
         ValidadorDTO validadorDTO = roleValidadorService.validar("Super Admin");
         Assertions.assertTrue(validadorDTO.error());
-        Assertions.assertFalse(validadorDTO.messageError().isEmpty());
-        validadorDTO.messageError().ifPresent( me -> Assertions.assertEquals(mensagemErro,me));
+        Assertions.assertFalse(validadorDTO.erroMessage().isEmpty());
+        validadorDTO.erroMessage().ifPresent(me -> Assertions.assertEquals(mensagemErro,me));
     }
 
     @Test

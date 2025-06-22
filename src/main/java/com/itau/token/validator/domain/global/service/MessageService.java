@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import java.util.Locale;
 
 @Service
-public class    MessageService {
+public class MessageService {
     private MessageSource messageSource;
 
     public MessageService(MessageSource messageSource) {
