@@ -1,11 +1,13 @@
 package com.itau.token.validator.adapter.handler;
 
 
-import com.itau.token.validator.domain.token.model.exception.BaseUncheckedException;
-import com.itau.token.validator.domain.token.model.exception.StandardError;
-import com.itau.token.validator.domain.token.model.exception.ValidationError;
+import com.itau.token.validator.domain.global.service.exception.BaseUncheckedException;
+import com.itau.token.validator.domain.global.service.exception.StandardError;
+import com.itau.token.validator.domain.global.service.exception.ValidationError;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.ConstraintViolationException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -20,15 +22,7 @@ import java.util.List;
 
 @ControllerAdvice
 public class ResourceExceptionHandler {
-
-
-    @ExceptionHandler(ConstraintViolationException.class)
-    public ResponseEntity<StandardError> dataViolation(ConstraintViolationException constraintViolationException, HttpServletRequest request){
-            StandardError standardError = new StandardError(HttpStatus.BAD_REQUEST.value(),constraintViolationException.getCause().getMessage(),
-                    Calendar.getInstance());
-
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(standardError);
-    }
+    private static final Logger logger = LoggerFactory.getLogger(ResourceExceptionHandler.class);
 
     @ExceptionHandler(ServerWebInputException.class)
     public ResponseEntity<StandardError> dataViolation(ServerWebInputException serverWebInputException){
@@ -39,7 +33,7 @@ public class ResourceExceptionHandler {
         for(FieldError fieldError : fieldErrors){
             validationViolation.addError(fieldError.getField(),fieldError.getDefaultMessage());
         }
-
+        logger.error("Erro na requisicao - {}",serverWebInputException);
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(validationViolation);
     }
 
@@ -52,6 +46,8 @@ public class ResourceExceptionHandler {
             for(FieldError fieldError : e.getBindingResult().getFieldErrors()){
                 validationViolation.addError(fieldError.getField(),fieldError.getDefaultMessage());
             }
+
+        logger.error("Erro na requisicao - {}",e);
         return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body(validationViolation);
     }
 
@@ -59,6 +55,8 @@ public class ResourceExceptionHandler {
     public ResponseEntity<StandardError>  businessValidation(BaseUncheckedException baseUncheckedException){
         StandardError standardError = new StandardError(HttpStatus.BAD_REQUEST.value(),baseUncheckedException.getMessage(),
                 Calendar.getInstance());
+
+        logger.error("Erro na requisicao - {}",baseUncheckedException);
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(standardError);
     }
 
@@ -67,6 +65,8 @@ public class ResourceExceptionHandler {
     public ResponseEntity<StandardError>  exception(Exception ex){
         StandardError standardError = new StandardError(HttpStatus.BAD_REQUEST.value(),ex.getMessage(),
                 Calendar.getInstance());
+
+        logger.error("Erro na requisicao - {}",ex);
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(standardError);
     }
 }

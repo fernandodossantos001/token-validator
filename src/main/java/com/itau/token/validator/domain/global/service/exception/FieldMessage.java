@@ -1,4 +1,4 @@
-package com.itau.token.validator.domain.token.model.exception;
+package com.itau.token.validator.domain.global.service.exception;
 
 import java.io.Serializable;
 

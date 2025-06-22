@@ -7,7 +7,7 @@ import com.itau.token.validator.domain.global.service.MessageService;
 import com.itau.token.validator.domain.token.ITokenParse;
 import com.itau.token.validator.domain.token.model.ConstantsMessageException;
 import com.itau.token.validator.domain.token.model.TokenDTO;
-import com.itau.token.validator.domain.token.model.exception.FalhaExtrairDadosToken;
+import com.itau.token.validator.domain.global.service.exception.FalhaExtrairDadosToken;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -27,7 +27,7 @@ public class TokenParseImpl implements ITokenParse {
 
 
     @Override
-    public JsonNode parseToken(TokenDTO tokenDTO) {
+    public JsonNode parseTokenPayload(TokenDTO tokenDTO) {
         String[] chunks = tokenDTO.tokenJwt().split("\\.");
         Base64.Decoder decoder = Base64.getUrlDecoder();
         String payload = new String(decoder.decode(chunks[1]));
