@@ -10,6 +10,7 @@ API responsável pela validação de tokens JWT, desenvolvida em Java 21 com Spr
 - [Contrato Primeiro (Contract-First)](#contrato-primeiro-contract-first)
 - [Como Ajustar o Contrato ou Adicionar Novos Endpoints](#como-ajustar-o-contrato-ou-adicionar-novos-endpoints)
 - [Como criar novas validações do token](#como-criar-novas-validações-do-token)
+- [Como subir ambiente com monitoramento](#como-subir-ambiete-com-monitoramento)
 - [Contribuição](#contribuição)
 
 ## Descrição
@@ -93,6 +94,16 @@ src/main/resources/contratos/token-validator-contrato.yaml
 
 ## Como criar novas validações do token
 Basta implementar a interface ```IValidadorStrategy``` e criar as regras de negócios necessárias. No projeto os únicos dados que são validados são os Claims do payload do token jwt
+
+## Como subir ambiente com monitoramento
+Para subir o ambiente com monitoramento, basta acessar o diretório ``` monitoring ``` após isso rode o comando abaixo
+> Comando responsável por provisionar grafana e prometheus com base no arquivo ```docker-compose.yml``` <br><br>
+ ```docker compose up``` <br><br>
+
+Após isso basta subir rodar a aplicação, ela já estará expondo as métricas para o prometheus e grafana através do actuator.
+ 
+
+
 ## Contribuição
 Contribuições são bem-vindas! Siga as boas práticas de desenvolvimento, mantenha o contrato atualizado e escreva testes automatizados para novas funcionalidades.
 
