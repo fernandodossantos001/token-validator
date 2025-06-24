@@ -1,6 +1,6 @@
-FROM eclipse-temurin:21-jdk-jammy
+FROM eclipse-temurin:21-jdk-alpine
 
-ENV JAVA_OPTS="-XX:+UseContainerSupport -XX:+AlwaysPreTouch -XX:InitialRAMPercentage=70.0 -XX:MaxRAMPercentage=70.0 -XX:+UseParallelGC"
+ENV JAVA_OPTS=" -Xms256m -Xmx512m -XX:+UseContainerSupport -XX:+AlwaysPreTouch -XX:InitialRAMPercentage=70.0 -XX:MaxRAMPercentage=70.0 -XX:+UseParallelGC "
 
 EXPOSE 8080
 
