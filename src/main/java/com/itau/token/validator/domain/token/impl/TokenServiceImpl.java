@@ -5,7 +5,6 @@ import com.itau.token.validator.domain.token.ITokenParse;
 import com.itau.token.validator.domain.token.ITokenService;
 import com.itau.token.validator.domain.token.model.TokenDTO;
 import com.itau.token.validator.domain.token.model.TokenValidateDTO;
-import com.itau.token.validator.domain.validador.exception.ValidadorException;
 import com.itau.token.validator.domain.validador.model.ValidadorDTO;
 import com.itau.token.validator.domain.validador.service.IValidadorService;
 import org.slf4j.Logger;

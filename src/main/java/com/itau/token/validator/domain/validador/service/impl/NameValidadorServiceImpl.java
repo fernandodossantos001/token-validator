@@ -14,7 +14,7 @@ import java.util.regex.Pattern;
 @Service
 public class NameValidadorServiceImpl implements IValidadorStrategy {
 
-    private final String regex = "^[a-zA-Z ]*$";
+    private final static String regex = "^[a-zA-Z ]*$";
     private final Pattern pattern;
     private final MessageService messageService;
     public NameValidadorServiceImpl(MessageService messageService) {

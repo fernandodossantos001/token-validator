@@ -5,7 +5,7 @@ import java.util.Calendar;
 import java.util.List;
 
 public class ValidationError extends StandardError{
-    private List<FieldMessage> errors = new ArrayList<FieldMessage>();
+    private List<FieldMessage> errors = new ArrayList<>();
 
     public ValidationError(Integer status, String mensagem, Calendar timeStamp) {
         super(status, mensagem, timeStamp);
