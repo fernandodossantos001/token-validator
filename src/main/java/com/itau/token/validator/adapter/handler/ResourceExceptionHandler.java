@@ -5,13 +5,10 @@ import com.itau.token.validator.domain.global.exception.BaseUncheckedException;
 import com.itau.token.validator.domain.global.exception.StandardError;
 import com.itau.token.validator.domain.global.exception.ValidationError;
 import com.itau.token.validator.domain.validador.exception.ValidadorException;
-import jakarta.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.FieldError;
-import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 

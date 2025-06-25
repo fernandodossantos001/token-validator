@@ -16,7 +16,7 @@ import java.util.regex.Pattern;
 public class SeedValidadorServiceImpl implements IValidadorStrategy {
 
     private final MessageService messageService;
-    private final String regex = "^[0-9]*$";
+    private final static String regex = "^[0-9]*$";
     private final Pattern pattern;
 
     public SeedValidadorServiceImpl(MessageService messageService) {
