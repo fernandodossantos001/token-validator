@@ -61,6 +61,16 @@ jobs:
       - name: Build with Maven
         run: mvn clean install
 
+      - name: SonarCloud Scan
+        uses: sonarsource/sonarcloud-github-action@v2
+        with:
+          organization: fernandodossantos001
+          projectKey: token-validator
+          projectName: token-validator
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+
       # Set up BuildKit Docker container builder to be able to build
       # multi-platform images and export cache
       # https://github.com/docker/setup-buildx-action
